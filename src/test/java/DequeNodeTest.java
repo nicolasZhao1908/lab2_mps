@@ -70,4 +70,33 @@ class DequeNodeTest<T> {
         d.setItem(newItem);
         assertTrue(newItem.equals(d.getItem()));
     }
+
+    @Test
+    public void testIsNotATerminalNode(){
+
+        DequeNode d = new DequeNode<Integer>(1,null,null);
+
+        //d is the only node
+        assertFalse(d.isNotATerminalNode());
+
+        //d is not a terminal node
+        DequeNode prev = new DequeNode(1,d,null);
+        d.setPrevious(prev);
+
+        DequeNode next = new DequeNode(1,null,d);
+        d.setNext(next);
+
+        assertTrue(d.isNotATerminalNode());
+
+        //d is the first node
+        d.setPrevious(null);
+
+        assertFalse(d.isNotATerminalNode());
+
+        //d is the last node
+        d.setPrevious(prev);
+        d.setNext(null);
+        assertFalse(d.isNotATerminalNode());
+
+    }
 }
