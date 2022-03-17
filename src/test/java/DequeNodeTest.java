@@ -1,10 +1,8 @@
 import org.junit.jupiter.api.Test;
 
-import static org.hamcrest.CoreMatchers.is;
-import static org.junit.Assert.assertThat;
 import static org.junit.jupiter.api.Assertions.*;
 
-class DequeNodeTest{
+class DequeNodeTest<T>{
 
     @Test
     public void testNewItemSettedIsNotNull(){
