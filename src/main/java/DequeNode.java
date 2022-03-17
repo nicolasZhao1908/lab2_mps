@@ -10,6 +10,12 @@ public class DequeNode<T> {
     private DequeNode<T> next;
     private DequeNode<T> previous;
 
+    public DequeNode(T item, DequeNode<T> next, DequeNode<T> previous) {
+        this.item = item;
+        this.next = next;
+        this.previous = previous;
+    }
+
     // Setters
     public void setItem(T item) {
         this.item = item;
@@ -34,12 +40,6 @@ public class DequeNode<T> {
 
     public DequeNode<T> getPrevious() {
         return previous;
-    }
-
-    public DequeNode(T item, DequeNode<T> next, DequeNode<T> previous) {
-        this.item = item;
-        this.next = next;
-        this.previous = previous;
     }
 
     public boolean isFirstNode() {
