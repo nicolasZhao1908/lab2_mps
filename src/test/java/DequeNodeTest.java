@@ -43,6 +43,7 @@ class DequeNodeTest<T> {
         assertThrows(RuntimeException.class, () -> new DequeNode<>(null, null, null) );
     }
 
+    //Not finished
     @Test
     public void testNewItemSettedIsNotNull(){
 
