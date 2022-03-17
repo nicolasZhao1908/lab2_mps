@@ -37,4 +37,9 @@ class DequeNodeTest<T> {
 
         assertNotEquals(oldValue,newValue);
     }
+
+    @Test
+    public void shouldComputeRaisAnExceptionIfTheItemIsNull(){
+        assertThrows(RuntimeException.class, () -> new DequeNode<>(null, null, null) );
+    }
 }
