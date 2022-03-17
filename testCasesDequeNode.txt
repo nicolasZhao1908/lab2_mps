@@ -1,0 +1,13 @@
+//Constructor
+test1: comprobar que el item no sea null
+test2: que los punteros next y prev no apunten al mismo nodo
+
+//setItem
+test3: comprobar que el item no es null
+test4: comprobar que el item se ha actualizado
+
+//setNext
+test5: comprobar que el next se ha actualizado
+
+//setPrevious
+test6: comprobar que el prev se ha actualizado
