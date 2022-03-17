@@ -11,3 +11,6 @@ test5: comprobar que el next se ha actualizado
 
 //setPrevious
 test6: comprobar que el prev se ha actualizado
+
+//isNotATerminalNode
+test7: comprobar que el método funciona
