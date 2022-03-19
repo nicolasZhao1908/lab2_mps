@@ -2,102 +2,102 @@ import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.Test;
 
 
+import static org.assertj.core.api.Assertions.*;
 import static org.junit.jupiter.api.Assertions.*;
 
 class DequeNodeTest<T> {
-    private DequeNode dequeNode;
-    
+    private DequeNode first;
+
     @AfterEach
     public void finish(){
-        dequeNode = null;
+        first = null;
     }
 
     @Test
     public void shouldHaveUpdatedNextIfSetNewNext(){
         Integer item = 0;
-        dequeNode = new DequeNode<>(item,null,null);
-        DequeNode<T> oldValue;
-        oldValue = dequeNode.getNext();
-        DequeNode<T> newValue;
-        newValue = new DequeNode(item,null,null);
-        dequeNode.setNext(newValue);
+        DequeNode <Integer> first = new DequeNode<>(item,null,null);
+        DequeNode <Integer> second = new DequeNode<>(item, null, first);
 
-        assertNotEquals(oldValue,newValue);
+        DequeNode oldNext = first.getNext();
+        first.setNext(second);
+        DequeNode newNext = first.getNext();
+
+        assertThat(oldNext).isNotEqualTo(newNext);
     }
 
     @Test
     public void shouldHaveUpdatedNextIfSetNewPrevious(){
         Integer item = 0;
-        dequeNode = new DequeNode<>(item,null,null);
-        DequeNode<T> oldValue;
-        oldValue = dequeNode.getPrevious();
-        DequeNode<T> newValue;
-        newValue = new DequeNode(item,null,null);
-        dequeNode.setPrevious(newValue);
+        DequeNode <Integer> first = new DequeNode<>(item,null,null);
+        DequeNode <Integer> second = new DequeNode<>(item, null, null);
 
-        assertNotEquals(oldValue,newValue);
+        DequeNode oldPrevius = second.getPrevious();
+        second.setPrevious(first);
+        DequeNode newPrevius = second.getPrevious();
+
+        assertThat(oldPrevius).isNotEqualTo(newPrevius);
     }
 
-    @Test
-    public void shouldComputeRaisAnExceptionIfTheItemIsNull(){
-        assertThrows(RuntimeException.class, () -> new DequeNode<>(null, null, null) );
-    }
-
-    //Not finished
     @Test
     public void testNewItemSettedIsNotNull(){
-
-        DequeNode<Integer> d = new DequeNode<>(null,null,null);
+        first = new DequeNode<>(null,null,null);
 
         Integer newItem = 1;
-        d.setItem(newItem);
-        assertNotEquals(d.getItem(), null);
+        first.setItem(newItem);
+        assertThat(first.getItem()).isNotNull();
     }
 
     @Test
     public void testNewItemSettedIsUpdated(){
         Integer newItem = 1;
 
-        DequeNode<Integer> d = new DequeNode<>(null,null,null);
-        d.setItem(newItem);
-        assertEquals(newItem,d.getItem());
+        first = new DequeNode<>(null,null,null);
+        Integer oldItem = (Integer) first.getItem();
+        first.setItem(newItem);
+        newItem = (Integer) first.getItem();
 
+        assertThat(newItem).isNotEqualTo(oldItem);
 
-        d = new DequeNode<>(1,null,null);
-        d.setItem(newItem);
-        assertEquals(newItem,d.getItem());
-
-        d = new DequeNode<>(2,null,null);
-        d.setItem(newItem);
-        assertEquals(newItem,d.getItem());
     }
 
     @Test
-    public void testIsNotATerminalNode(){
+    public void isNotATerminalNode() {
 
-        DequeNode d = new DequeNode<Integer>(1,null,null);
+        first = new DequeNode<Integer>(1, null, null);
 
-        //d is the only node
-        assertFalse(d.isNotATerminalNode());
+        //first is not a terminal node
+        DequeNode prev = new DequeNode(1, first, null);
+        first.setPrevious(prev);
 
-        //d is not a terminal node
-        DequeNode prev = new DequeNode(1,d,null);
-        d.setPrevious(prev);
+        DequeNode next = new DequeNode(1, null, first);
+        first.setNext(next);
 
-        DequeNode next = new DequeNode(1,null,d);
-        d.setNext(next);
+        assertThat(first.isNotATerminalNode()).isTrue();
+    }
 
-        assertTrue(d.isNotATerminalNode());
+    @Test
+    public void oneNodeIsATerminalNodeAndFirstNode() {
 
-        //d is the first node
-        d.setPrevious(null);
+        first = new DequeNode<Integer>(1, null, null);
 
-        assertFalse(d.isNotATerminalNode());
-
-        //d is the last node
-        d.setPrevious(prev);
-        d.setNext(null);
-        assertFalse(d.isNotATerminalNode());
+        //first is the only node
+        assertThat(first.isFirstNode()).isTrue();
 
     }
+
+    @Test
+    public void lastNodeIsIsATerminalNodeAndLastNode() {
+
+        first = new DequeNode<Integer>(1, null, null);
+
+        //first is not a terminal node
+        DequeNode prev = new DequeNode(1, first, null);
+
+        //first is the last node
+        first.setPrevious(prev);
+        assertThat(first.isLastNode()).isTrue();
+    }
+
+
 }
