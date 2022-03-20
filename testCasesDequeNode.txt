@@ -9,9 +9,6 @@ shouldHaveUpdatedNextIfSetNewPrevious: comprobar que el prev se ha actualizado
 testNewItemSettedIsNotNull: comprobar que el item no es null
 testNewItemSettedIsUpdated: comprobar que el item se ha actualizado
 
-
-
-
 //isNotATerminalNode
 isNotATerminalNode: comprobar que un nodo que se encuentra entre dos nodos no es terminal
 oneNodeIsATerminalNodeAndFirstNode: comprobar que el un nodo solo isFirst

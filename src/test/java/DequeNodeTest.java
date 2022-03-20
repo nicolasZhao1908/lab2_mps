@@ -32,11 +32,11 @@ class DequeNodeTest<T> {
         DequeNode <Integer> first = new DequeNode<>(item,null,null);
         DequeNode <Integer> second = new DequeNode<>(item, null, null);
 
-        DequeNode oldPrevius = second.getPrevious();
+        DequeNode oldPrevious = second.getPrevious();
         second.setPrevious(first);
-        DequeNode newPrevius = second.getPrevious();
+        DequeNode newPrevious = second.getPrevious();
 
-        assertThat(oldPrevius).isNotEqualTo(newPrevius);
+        assertThat(oldPrevious).isNotEqualTo(newPrevious);
     }
 
     @Test
