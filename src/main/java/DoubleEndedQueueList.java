@@ -54,6 +54,8 @@ public class DoubleEndedQueueList implements DoubleEndedQueue{
                 first = first.getNext();
             }
             size--;
+        }else {
+            throw new RuntimeException("The list is empty");
         }
     }
 
@@ -68,6 +70,8 @@ public class DoubleEndedQueueList implements DoubleEndedQueue{
                 last = last.getPrevious();
             }
             size--;
+        }else{
+            throw new RuntimeException("The list is empty");
         }
     }
 

@@ -40,7 +40,7 @@ class DequeNodeTest<T> {
     }
 
     @Test
-    public void testNewItemSettedIsNotNull(){
+    public void testNewItemSetIsNotNull(){
         first = new DequeNode<>(null,null,null);
 
         Integer newItem = 1;
@@ -49,7 +49,7 @@ class DequeNodeTest<T> {
     }
 
     @Test
-    public void testNewItemSettedIsUpdated(){
+    public void testNewItemSetIsUpdated(){
         Integer newItem = 1;
 
         first = new DequeNode<>(null,null,null);
