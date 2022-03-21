@@ -52,6 +52,7 @@ public class DoubleEndedQueueList implements DoubleEndedQueue{
                 last = null;
             } else {
                 first = first.getNext();
+                first.setPrevious(null);
             }
             size--;
         }else {
@@ -68,6 +69,7 @@ public class DoubleEndedQueueList implements DoubleEndedQueue{
                 last = null;
             } else {
                 last = last.getPrevious();
+                last.setNext(null);
             }
             size--;
         }else{
