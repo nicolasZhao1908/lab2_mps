@@ -19,7 +19,7 @@ public class DoubleEndedQueueList<T> implements DoubleEndedQueue<T>{
         last = null;
         size = 0;
 
-        while (size < lista.size()){
+        while (size <= lista.size()){
             this.append(new DequeNode(lista.getAt(size).getItem(), null, null));
         }
     }
