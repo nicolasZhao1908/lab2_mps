@@ -1,4 +1,6 @@
 import java.util.Comparator;
+import java.util.Objects;
+
 public class DoubleEndedQueueList<T> implements DoubleEndedQueue<T>{
 
 
@@ -178,5 +180,27 @@ public class DoubleEndedQueueList<T> implements DoubleEndedQueue<T>{
                 }
             }
         }
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        DoubleEndedQueueList<?> that = (DoubleEndedQueueList<?>) o;
+        DequeNode node1 = first;
+        DequeNode node2 = that.first;
+        int cont = 0;
+        while(node1.equals(node2) && node1 != null && node2 != null){
+            node1 = node1.getNext();
+            node2 = node2.getNext();
+            cont++;
+        }
+        return size == that.size && Objects.equals(first, that.first) && Objects.equals(last, that.last) &&
+                cont == size;
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(first, last, size);
     }
 }

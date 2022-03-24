@@ -207,4 +207,25 @@ class DoubleEndedQueueTest {
         assertThrows(RuntimeException.class, () -> doubleEndedQueueList.delete(node4));
     }
 
+    @Test
+    public void shouldDeleteTheFirstNode(){
+        DoubleEndedQueueList<Integer> list = new DoubleEndedQueueList<>();
+        DequeNode node1 = new DequeNode(1,null,null);
+        DequeNode node2 = new DequeNode(2,null, null);
+        DequeNode node3 = new DequeNode(3,null, null);
+
+        list.append(node1);
+        list.append(node2);
+        list.append(node3);
+
+        DoubleEndedQueueList<Integer> expectedValue = list;
+
+        list.delete(node1);
+
+        assertThat(list).isEqualTo(expectedValue);
+
+    }
+
+
+
 }
