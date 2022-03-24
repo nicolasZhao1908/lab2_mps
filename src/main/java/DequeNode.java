@@ -53,4 +53,6 @@ public class DequeNode<T> {
     public boolean isNotATerminalNode() {
         return (!isFirstNode() && !isLastNode());
     }
+
+
 }
