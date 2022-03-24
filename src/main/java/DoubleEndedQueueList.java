@@ -200,14 +200,7 @@ public class DoubleEndedQueueList<T> implements DoubleEndedQueue<T>{
         DoubleEndedQueueList<?> that = (DoubleEndedQueueList<?>) o;
         DequeNode node1 = first;
         DequeNode node2 = that.first;
-        int cont = 0;
-        while(node1.equals(node2) && node1 != null && node2 != null){
-            node1 = node1.getNext();
-            node2 = node2.getNext();
-            cont++;
-        }
-        return size == that.size && Objects.equals(first, that.first) && Objects.equals(last, that.last) &&
-                cont == size;
+        return size == that.size && Objects.equals(first, that.first) && Objects.equals(last, that.last);
     }
 
     @Override
