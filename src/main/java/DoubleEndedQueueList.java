@@ -124,7 +124,11 @@ public class DoubleEndedQueueList<T> implements DoubleEndedQueue{
 
     @Override
     public void delete(DequeNode node) {
-        if(this.find(node) != null ){
+        if(node == null) {
+            throw new RuntimeException("Node not valid");
+        }else if(this.find(node) == null){
+            throw new RuntimeException("Node not in list");
+        }else{
 
             if(first.equals(node)){
                 deleteFirst();
@@ -143,6 +147,8 @@ public class DoubleEndedQueueList<T> implements DoubleEndedQueue{
                 actual.setPrevious(prev);
             }
         }
+
+
     }
 
     @Override
