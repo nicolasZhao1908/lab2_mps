@@ -13,4 +13,8 @@ shouldAddOneToSizeAndUpdateReferencesWhenAppending: comprobar que al insertar po
 shouldAddOneToSizeAndUpdateReferencesWhenAppendingLeft: comprobar que al insertar por la izquierda un nodo se añade 1 al size del DoubleEndedQueueList y se actualizan las referencias
 shouldSubtractOneToSizeAndUpdateReferencesWhenDeletingLast: comprobar que al eliminar el último nodo se reduce 1 al size del DoubleEndedQueueList
 shouldSubtractOneToSizeAndUpdateReferencesWhenDeletingFirst: comprobar que al eliminar el primer nodo se reduce 1 al size del DoubleEndedQueueList
+shouldGetAtPositionOneReturnTheNodeAtPositionOne: comprobar que al usar el método getAt con argumento 1, devuelve el segundo nodo
+shouldGetAtPositionZeroReturnTheNodeAtPositionZero: comprobar que al usar el método getAt con argumento 0, devuelve el primer nodo
+shouldGetAtNegativePositionThrowAnException: comprobar que se lance una excepción cuando el argumento de getAt sea negativo
+shouldGetAtPositionGreaterOrEqualThanSizeThrowAnException: lanza una excepción si el argumento de getAt es mayor que el size de la lista
 shouldRaiseExceptionWhenDeletingANodeFromEmptyList: comprobar que no se elimina nada de un DoubleEndedQueueList con size 0
