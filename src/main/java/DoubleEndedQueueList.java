@@ -143,18 +143,12 @@ public class DoubleEndedQueueList<T> implements DoubleEndedQueue<T>{
 
     private DequeNode<T> findNode (DequeNode<T> node){
         DequeNode prev = first;
-        DequeNode current = null;
 
-        if (first!=null){
-            current = this.first.getNext();
+        while(prev != null && !prev.equals(node)){
+            prev = prev.getNext();
         }
 
-        while(current != null && !current.equals(node)){
-            prev = current;
-            current = current.getNext();
-        }
-
-        return current;
+        return prev;
     }
 
     @Override
