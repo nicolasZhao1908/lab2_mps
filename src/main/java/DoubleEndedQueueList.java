@@ -106,7 +106,25 @@ public class DoubleEndedQueueList implements DoubleEndedQueue{
 
     @Override
     public void delete(DequeNode node) {
+        if(this.find(node) != null){
 
+            if(first.equals(node)){
+                deleteFirst();
+            }else if(last.equals(node)){
+                deleteLast();
+            }else{
+                DequeNode prev = first;
+                DequeNode actual = this.first.getNext();
+                while(!actual.equals(node)){
+                    prev = actual;
+                    actual = actual.getNext();
+                }
+                prev = prev.getPrevious();
+                actual = actual.getNext();
+                prev.setNext(actual);
+                actual.setPrevious(prev);
+            }
+        }
     }
 
     @Override
