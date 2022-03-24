@@ -126,7 +126,7 @@ public class DoubleEndedQueueList<T> implements DoubleEndedQueue<T>{
     public void delete(DequeNode<T> node) {
         if(node == null) {
             throw new RuntimeException("Node not valid");
-        }else if(this.findNode(node) == null){
+        }else if(findNode(node) == null){
             throw new RuntimeException("Node not in list");
         }else{
             if(first.equals(node)){
@@ -152,32 +152,31 @@ public class DoubleEndedQueueList<T> implements DoubleEndedQueue<T>{
     }
 
     @Override
-    public void sort(Comparator<DequeNode<T>> comparator) {
-        DequeNode<T> previus = first;
+    public void sort(Comparator<T> comparator) {
+        DequeNode<T> previous = first;
         DequeNode<T> next = null;
         boolean sorted = false;
 
         if (first != null){
-            next = previus.getNext();
-        }
-        while (!sorted){
-            while (next!=null){
-                if (comparator.compare(previus,next) > 0){
-                    previus.getPrevious().setNext(next);
-                    next.getNext().setPrevious(previus);
+            next = previous.getNext();
+            while (!sorted){
+                while (next!=null){
+                    if (comparator.compare(previous.getItem(),next.getItem()) > 0){
+                        previous.getPrevious().setNext(next);
+                        next.getNext().setPrevious(previous);
 
-                    next.setPrevious(previus.getPrevious());
-                    previus.setNext(next.getNext());
+                        next.setPrevious(previous.getPrevious());
+                        previous.setNext(next.getNext());
 
-                    next.setNext(previus);
-                    previus.setPrevious(next);
+                        next.setNext(previous);
+                        previous.setPrevious(next);
 
-                    sorted = false;
+                        sorted = false;
+                    }
+                    previous = next;
+                    next = next.getNext();
                 }
-                previus = next;
-                next = next.getNext();
             }
         }
-
     }
 }
