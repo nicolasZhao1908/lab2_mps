@@ -1,4 +1,6 @@
 import java.util.Comparator;
+import java.util.Objects;
+
 public class DoubleEndedQueueList<T> implements DoubleEndedQueue<T>{
 
 
@@ -136,7 +138,7 @@ public class DoubleEndedQueueList<T> implements DoubleEndedQueue<T>{
             }else{
                 node.getPrevious().setNext(node.getNext());
                 node.getNext().setPrevious(node.getPrevious());
-                node = null;
+                size--;
             }
         }
     }
@@ -179,4 +181,5 @@ public class DoubleEndedQueueList<T> implements DoubleEndedQueue<T>{
             }
         }
     }
+
 }

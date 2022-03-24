@@ -206,5 +206,79 @@ class DoubleEndedQueueTest {
 
         assertThrows(RuntimeException.class, () -> doubleEndedQueueList.delete(node4));
     }
+    @Test
+    public void shouldSubtractOneToListSizeWhenDeletingANode(){
+        DequeNode node1 = new DequeNode(1,null,null);
+        DequeNode node2 = new DequeNode(2,null, null);
+        DequeNode node3 = new DequeNode(3,null, null);
+
+        doubleEndedQueueList.append(node1);
+        doubleEndedQueueList.append(node2);
+        doubleEndedQueueList.append(node3);
+
+        int actualValue, expectedValue;
+        expectedValue = doubleEndedQueueList.size()-1;
+        doubleEndedQueueList.delete(node2);
+        actualValue = doubleEndedQueueList.size();
+
+        assertThat(actualValue).isEqualTo(expectedValue);
+    }
+
+    @Test
+    public void shouldUpdateReferencesWhenDeletingANode(){
+        DequeNode node1 = new DequeNode(1,null,null);
+        DequeNode node2 = new DequeNode(2,null, null);
+        DequeNode node3 = new DequeNode(3,null, null);
+
+        doubleEndedQueueList.append(node1);
+        doubleEndedQueueList.append(node2);
+        doubleEndedQueueList.append(node3);
+
+        DequeNode actualValue, expectedValue;
+        doubleEndedQueueList.delete(node2);
+
+        expectedValue = node3;
+        actualValue = node1.getNext();
+        assertThat(actualValue).isEqualTo(expectedValue);
+
+        expectedValue = node1;
+        actualValue = node3.getPrevious();
+        assertThat(actualValue).isEqualTo(expectedValue);
+    }
+
+    @Test
+    public void shouldListSubtractANodeWhenDeletingANode(){
+        DequeNode node1 = new DequeNode(1,null,null);
+        DequeNode node2 = new DequeNode(2,null, null);
+        DequeNode node3 = new DequeNode(3,null, null);
+
+        DoubleEndedQueue actualList = new DoubleEndedQueueList();
+
+        actualList.append(node1);
+        actualList.append(node2);
+        actualList.append(node3);
+
+        actualList.delete(node2);
+
+        DoubleEndedQueueList expectedList = new DoubleEndedQueueList<>();
+        expectedList.append(node1);
+        expectedList.append(node3);
+
+        int listSize;
+        if (expectedList.size()> actualList.size())
+            listSize = expectedList.size();
+        else
+            listSize = actualList.size();
+
+        DequeNode expectedNode = expectedList.peekFirst();
+        DequeNode actualNode = actualList.peekFirst();
+        assertThat(actualNode).isEqualTo(expectedNode);
+
+        for (int actualIndex = 1; actualIndex < listSize; actualIndex++){
+            expectedNode = expectedNode.getNext();
+            actualNode = actualNode.getNext();
+            assertThat(actualNode).isEqualTo(expectedNode);
+        }
+    }
 
 }
