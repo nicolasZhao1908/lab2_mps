@@ -101,11 +101,10 @@ public class DoubleEndedQueueList<T> implements DoubleEndedQueue{
 
     @Override
     public DequeNode<T> find(Object item) {
-        int cont = 0;
         DequeNode temp = first;
         DequeNode result = null;
 
-        while (temp != null && cont < size){
+        while (temp != null){
             if (item.equals(temp)){
                 result = temp;
             }
