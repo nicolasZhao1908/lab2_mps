@@ -109,7 +109,7 @@ public class DoubleEndedQueueList<T> implements DoubleEndedQueue<T>{
     }
 
     @Override
-    public DequeNode<T> find(Object item) {
+    public DequeNode<T> find(T item) {
         DequeNode temp = first;
         DequeNode result = null;
 
@@ -123,30 +123,38 @@ public class DoubleEndedQueueList<T> implements DoubleEndedQueue<T>{
     }
 
     @Override
-    public void delete(DequeNode node) {
+    public void delete(DequeNode<T> node) {
         if(node == null) {
             throw new RuntimeException("Node not valid");
-        }else if(this.find(node) == null){
+        }else if(this.findNode(node) == null){
             throw new RuntimeException("Node not in list");
         }else{
-
             if(first.equals(node)){
                 deleteFirst();
             }else if(last.equals(node)){
                 deleteLast();
             }else{
-                DequeNode prev = first;
-                DequeNode actual = this.first.getNext();
-                while(!actual.equals(node)){
-                    prev = actual;
-                    actual = actual.getNext();
-                }
-                prev = prev.getPrevious();
-                actual = actual.getNext();
-                prev.setNext(actual);
-                actual.setPrevious(prev);
+                node.getPrevious().setNext(node.getNext());
+                node.getNext().setPrevious(node.getPrevious());
+                node = null;
             }
         }
+    }
+
+    private DequeNode<T> findNode (DequeNode<T> node){
+        DequeNode prev = first;
+        DequeNode current = null;
+
+        if (first!=null){
+            current = this.first.getNext();
+        }
+
+        while(current != null && !current.equals(node)){
+            prev = current;
+            current = current.getNext();
+        }
+
+        return current;
     }
 
     @Override
