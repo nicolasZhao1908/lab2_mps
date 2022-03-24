@@ -1,9 +1,9 @@
 import java.util.Comparator;
 
-public class DoubleEndedQueueList implements DoubleEndedQueue{
+public class DoubleEndedQueueList<T> implements DoubleEndedQueue{
 
-    private DequeNode first;
-    private DequeNode last;
+    private DequeNode<T> first;
+    private DequeNode<T> last;
     int size;
 
     public DoubleEndedQueueList (){
@@ -80,12 +80,12 @@ public class DoubleEndedQueueList implements DoubleEndedQueue{
     }
 
     @Override
-    public DequeNode peekFirst() {
+    public DequeNode<T> peekFirst() {
         return first;
     }
 
     @Override
-    public DequeNode peekLast() {
+    public DequeNode<T> peekLast() {
         return last;
     }
 
@@ -95,13 +95,31 @@ public class DoubleEndedQueueList implements DoubleEndedQueue{
     }
 
     @Override
-    public DequeNode getAt(int position) {
-        return null;
+    public DequeNode<T> getAt(int position) {
+        if (position >= size)
+            throw new RuntimeException("The position is out of bounds");
+        if (position < 0){
+            throw new RuntimeException("The position is negative");
+        }
+        DequeNode res = first;
+        for (int actualIndex = 0; actualIndex < position; actualIndex++){
+            res = first.getNext();
+        }
+        return res;
     }
 
     @Override
-    public DequeNode find(Object item) {
-        return null;
+    public DequeNode<T> find(Object item) {
+        DequeNode temp = first;
+        DequeNode result = null;
+
+        while (temp != null){
+            if (item.equals(temp)){
+                result = temp;
+            }
+            temp = temp.getNext();
+        }
+        return result;
     }
 
     @Override
