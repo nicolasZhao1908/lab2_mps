@@ -1,6 +1,6 @@
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.Test;
-
+import static org.assertj.core.api.Assertions.*;
 
 import static org.assertj.core.api.Assertions.*;
 import static org.junit.jupiter.api.Assertions.*;
@@ -42,7 +42,6 @@ class DequeNodeTest<T> {
     @Test
     public void testNewItemSetIsNotNull(){
         first = new DequeNode<>(null,null,null);
-
         Integer newItem = 1;
         first.setItem(newItem);
         assertThat(first.getItem()).isNotNull();
@@ -58,7 +57,6 @@ class DequeNodeTest<T> {
         newItem = (Integer) first.getItem();
 
         assertThat(newItem).isNotEqualTo(oldItem);
-
     }
 
     @Test

@@ -1,6 +1,6 @@
 import java.util.Comparator;
+public class DoubleEndedQueueList<T> implements DoubleEndedQueue<T>{
 
-public class DoubleEndedQueueList<T> implements DoubleEndedQueue{
 
     private DequeNode<T> first;
     private DequeNode<T> last;
@@ -147,12 +147,29 @@ public class DoubleEndedQueueList<T> implements DoubleEndedQueue{
                 actual.setPrevious(prev);
             }
         }
-
-
     }
 
     @Override
-    public void sort(Comparator comparator) {
+    public void sort(Comparator<DequeNode<T>> comparator) {
+        DequeNode<T> previus = first;
+        DequeNode<T> next = null;
+        if (first != null){
+            next = previus.getNext();
+        }
+        while (next!=null){
+            if (comparator.compare(previus,next) > 0){
+                previus.getPrevious().setNext(next);
+                next.getNext().setPrevious(previus);
 
+                next.setPrevious(previus.getPrevious());
+                previus.setNext(next.getNext());
+
+                next.setNext(previus);
+                previus.setPrevious(next);
+
+            }
+            previus = next;
+            next = next.getNext();
+        }
     }
 }
