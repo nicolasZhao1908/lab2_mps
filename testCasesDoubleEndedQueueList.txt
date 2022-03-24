@@ -1,4 +1,0 @@
-comprobar que los DequeNode que se pasan como argumentos no son nulos
-comprobar que al insertar un nodo se añade 1 al size del DoubleEndedQueueList
-comprobar que al eliminar un nodo se reduce 1 al size del DoubleEndedQueueList
-comprobar que no se elimina nada de un DoubleEndedQueueList con size 0

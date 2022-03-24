@@ -93,7 +93,7 @@ class DoubleEndedQueueTest {
 
     //Test de que DeleteLast actualiza las referencias y el size
     @Test
-    public void shouldSubstractcOneToSizeAndUpdateReferencesWhenDeletingLast(){
+    public void shouldSubtractOneToSizeAndUpdateReferencesWhenDeletingLast(){
         DequeNode node1 = new DequeNode(1,null,null);
         DequeNode node2 = new DequeNode(2,null,null);
         DequeNode node3 = new DequeNode(3,null,null);
@@ -123,7 +123,7 @@ class DoubleEndedQueueTest {
 
     //Test de que DeleteFirst actualiza las referencias y el size
     @Test
-    public void shouldSubstractOneToSizeAndUpdateReferencesWhenDeletingFirst(){
+    public void shouldSubtractOneToSizeAndUpdateReferencesWhenDeletingFirst(){
         DequeNode node1 = new DequeNode(1,null,null);
         DequeNode node2 = new DequeNode(2,null,null);
         DequeNode node3 = new DequeNode(3,null,null);
