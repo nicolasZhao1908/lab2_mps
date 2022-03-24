@@ -96,7 +96,16 @@ public class DoubleEndedQueueList implements DoubleEndedQueue{
 
     @Override
     public DequeNode getAt(int position) {
-        return null;
+        if (position >= size)
+            throw new RuntimeException("The position is out of bounds");
+        if (position < 0){
+            throw new RuntimeException("The position is negative");
+        }
+        DequeNode res = first;
+        for (int actualIndex = 0; actualIndex < position; actualIndex++){
+            res = first.getNext();
+        }
+        return res;
     }
 
     @Override

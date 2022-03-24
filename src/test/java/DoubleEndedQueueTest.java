@@ -150,6 +150,38 @@ class DoubleEndedQueueTest {
     }
 
     @Test
+    public void shouldGetAtPositionOneReturnTheNodeAtPositionOne(){
+        DequeNode node1 = new DequeNode(1,null,null);
+        DequeNode node2 = new DequeNode(2,null,null);
+        doubleEndedQueueList.append(node1);
+        doubleEndedQueueList.append(node2);
+        DequeNode actualNode = doubleEndedQueueList.getAt(1);
+        DequeNode expectedNode = node2;
+        assertThat(actualNode).isEqualTo(expectedNode);
+    }
+
+    @Test
+    public void shouldGetAtPositionZeroReturnTheNodeAtPositionZero(){
+        DequeNode node1 = new DequeNode(1,null,null);
+        doubleEndedQueueList.append(node1);
+        DequeNode actualNode = doubleEndedQueueList.getAt(0);
+        DequeNode expectedNode = node1;
+        assertThat(actualNode).isEqualTo(expectedNode);
+    }
+
+    @Test
+    public void shouldGetAtNegativePositionThrowAnException(){
+        assertThrows(RuntimeException.class,()-> doubleEndedQueueList.getAt(-1));
+    }
+    @Test
+    public void shouldGetAtPositionGreaterOrEqualThanSizeThrowAnException(){
+        DequeNode node1 = new DequeNode(1,null,null);
+        doubleEndedQueueList.append(node1);
+        assertThrows(RuntimeException.class,()-> doubleEndedQueueList.getAt(1));
+        assertThrows(RuntimeException.class,()-> doubleEndedQueueList.getAt(10));
+    }
+
+    @Test
     public void shouldRaiseExceptionWhenDeletingANodeFromEmptyList(){
         assertThrows(RuntimeException.class,() -> doubleEndedQueueList.deleteFirst());
         assertThrows(RuntimeException.class,() -> doubleEndedQueueList.deleteLast());
