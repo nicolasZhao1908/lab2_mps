@@ -466,4 +466,77 @@ class DoubleEndedQueueTest {
         assertThat(actualList.find(aux.getItem())).isNotNull();
     }
 
+    @Test
+    public void shouldDeleteTheFirstNode(){
+        DoubleEndedQueueList<Integer> list = new DoubleEndedQueueList<>();
+        DequeNode node1 = new DequeNode(1,null,null);
+        DequeNode node2 = new DequeNode(2,null, null);
+        DequeNode node3 = new DequeNode(3,null, null);
+        DequeNode node4 = new DequeNode(4,null, null);
+
+        list.append(node1);
+        list.append(node2);
+        list.append(node3);
+        list.append(node4);
+
+        DoubleEndedQueueList<Integer> expectedValue = new DoubleEndedQueueList<>();
+        expectedValue.append(node2);
+        expectedValue.append(node3);
+        expectedValue.append(node4);
+
+        list.delete(node1);
+
+        assertEquals(expectedValue,list);
+    }
+
+    @Test
+    public void shouldDeleteTheLastNode(){
+        DoubleEndedQueueList<Integer> list = new DoubleEndedQueueList<>();
+        DequeNode node1 = new DequeNode(1,null,null);
+        DequeNode node2 = new DequeNode(2,null, null);
+        DequeNode node3 = new DequeNode(3,null, null);
+        DequeNode node4 = new DequeNode(4,null, null);
+
+        list.append(node1);
+        list.append(node2);
+        list.append(node3);
+        list.append(node4);
+
+        DoubleEndedQueueList<Integer> expectedValue = new DoubleEndedQueueList<>();
+        expectedValue.append(node1);
+        expectedValue.append(node2);
+        expectedValue.append(node3);
+
+        list.delete(node4);
+
+        assertEquals(expectedValue,list);
+    }
+
+    @Test
+    public void shouldDeleteAnIntermediateNode(){
+        DoubleEndedQueueList<Integer> list = new DoubleEndedQueueList<>();
+        DequeNode node1 = new DequeNode(1,null,null);
+        DequeNode node2 = new DequeNode(2,null, null);
+        DequeNode node3 = new DequeNode(3,null, null);
+        DequeNode node4 = new DequeNode(4,null, null);
+
+        list.append(node1);
+        list.append(node2);
+        list.append(node3);
+        list.append(node4);
+
+        DoubleEndedQueueList<Integer> expectedValue = new DoubleEndedQueueList<>();
+        expectedValue.append(node1);
+        expectedValue.append(node2);
+        expectedValue.append(node4);
+
+        list.delete(node3);
+
+        assertEquals(expectedValue,list);
+    }
+
+
+
+
+
 }
