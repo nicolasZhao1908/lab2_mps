@@ -153,23 +153,29 @@ public class DoubleEndedQueueList<T> implements DoubleEndedQueue<T>{
     public void sort(Comparator<DequeNode<T>> comparator) {
         DequeNode<T> previus = first;
         DequeNode<T> next = null;
+        boolean sorted = false;
+
         if (first != null){
             next = previus.getNext();
         }
-        while (next!=null){
-            if (comparator.compare(previus,next) > 0){
-                previus.getPrevious().setNext(next);
-                next.getNext().setPrevious(previus);
+        while (!sorted){
+            while (next!=null){
+                if (comparator.compare(previus,next) > 0){
+                    previus.getPrevious().setNext(next);
+                    next.getNext().setPrevious(previus);
 
-                next.setPrevious(previus.getPrevious());
-                previus.setNext(next.getNext());
+                    next.setPrevious(previus.getPrevious());
+                    previus.setNext(next.getNext());
 
-                next.setNext(previus);
-                previus.setPrevious(next);
+                    next.setNext(previus);
+                    previus.setPrevious(next);
 
+                    sorted = false;
+                }
+                previus = next;
+                next = next.getNext();
             }
-            previus = next;
-            next = next.getNext();
         }
+
     }
 }
