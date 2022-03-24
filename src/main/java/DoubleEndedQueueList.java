@@ -114,7 +114,7 @@ public class DoubleEndedQueueList<T> implements DoubleEndedQueue<T>{
         DequeNode result = null;
 
         while (temp != null){
-            if (item.equals(temp)){
+            if (item.equals(temp.getItem())){
                 result = temp;
             }
             temp = temp.getNext();
