@@ -313,4 +313,21 @@ class DoubleEndedQueueTest {
         }
     }
 
+    @Test
+    public void shouldFindANodeThatThereIsInList(){
+        DequeNode node1 = new DequeNode(1,null,null);
+        DequeNode node2 = new DequeNode(2,null, null);
+        DequeNode node3 = new DequeNode(3,null, null);
+
+        DoubleEndedQueue actualList = new DoubleEndedQueueList();
+
+        actualList.append(node1);
+        actualList.append(node2);
+        actualList.append(node3);
+
+        DequeNode aux = actualList.getAt(0);
+
+        assertThat(actualList.find(aux.getItem())).isNotNull();
+    }
+
 }

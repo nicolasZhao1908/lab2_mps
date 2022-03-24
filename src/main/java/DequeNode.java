@@ -56,6 +56,7 @@ public class DequeNode<T> {
         return (!isFirstNode() && !isLastNode());
     }
 
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;

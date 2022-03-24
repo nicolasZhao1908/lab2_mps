@@ -18,3 +18,4 @@ shouldGetAtPositionZeroReturnTheNodeAtPositionZero: comprobar que al usar el mé
 shouldGetAtNegativePositionThrowAnException: comprobar que se lance una excepción cuando el argumento de getAt sea negativo
 shouldGetAtPositionGreaterOrEqualThanSizeThrowAnException: lanza una excepción si el argumento de getAt es mayor que el size de la lista
 shouldRaiseExceptionWhenDeletingANodeFromEmptyList: comprobar que no se elimina nada de un DoubleEndedQueueList con size 0
+shouldFindANodeThatThereIsInList: Recupera un nodo y luego lo encuentra
