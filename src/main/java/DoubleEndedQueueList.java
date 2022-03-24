@@ -124,7 +124,7 @@ public class DoubleEndedQueueList<T> implements DoubleEndedQueue{
 
     @Override
     public void delete(DequeNode node) {
-        if(this.find(node) != null){
+        if(this.find(node) != null ){
 
             if(first.equals(node)){
                 deleteFirst();
