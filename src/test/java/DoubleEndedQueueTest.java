@@ -336,18 +336,26 @@ class DoubleEndedQueueTest {
         DequeNode node1 = new DequeNode(1,null,null);
         DequeNode node2 = new DequeNode(2,null, null);
         DequeNode node3 = new DequeNode(3,null, null);
+        DequeNode node4 = new DequeNode(4,null, null);
+
 
         list.append(node1);
         list.append(node2);
         list.append(node3);
+        list.append(node4);
 
-        DoubleEndedQueueList<Integer> expectedValue = list;
+        DoubleEndedQueueList<Integer> expectedValue = new DoubleEndedQueueList<>();
+        expectedValue.append(node2);
+        expectedValue.append(node3);
+        expectedValue.append(node4);
 
         list.delete(node1);
 
-        assertThat(list).isEqualTo(expectedValue);
+        assertEquals(expectedValue,list);
 
     }
+
+
 
 
 
