@@ -14,6 +14,17 @@ public class DoubleEndedQueueList<T> implements DoubleEndedQueue<T>{
         size = 0;
     }
 
+    public DoubleEndedQueueList (DoubleEndedQueueList lista){
+        first= null;
+        last = null;
+        size = 0;
+
+        while (size <= lista.size()){
+            this.append(new DequeNode(lista.getAt(size).getItem(), null, null));
+        }
+    }
+
+
     @Override
     public void append(DequeNode node) {
         if (first == null){
@@ -138,7 +149,7 @@ public class DoubleEndedQueueList<T> implements DoubleEndedQueue<T>{
             }else{
                 node.getPrevious().setNext(node.getNext());
                 node.getNext().setPrevious(node.getPrevious());
-                node = null;
+                size--;
             }
         }
     }
