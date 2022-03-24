@@ -33,47 +33,69 @@ class DoubleEndedQueueTest {
         assertThat(doubleEndedQueueList.peekFirst()).isNotNull();
     }
 
-    //Test de que Append actualiza las referencias y el size
+
     @Test
-    public void shouldAddOneToSizeAndUpdateReferencesWhenAppending () {
+    public void shouldAddOneElementToSizeAndUpdateReferencesWhenAppending() {
         DequeNode node1 = new DequeNode(1,null,null);
-        DequeNode node2 = new DequeNode(2,null,null);
-        DequeNode node3 = new DequeNode(3,null,null);
         int initialSize = doubleEndedQueueList.size();
 
         doubleEndedQueueList.append(node1);
         assertThat(node1.getNext()).isNull();
         assertThat(node1.getPrevious()).isNull();
         assertThat(doubleEndedQueueList.size()).isEqualTo(initialSize+1);
+    }
 
+    @Test
+    public void shouldAddTwoElementsToSizeAndUpdateReferencesWhenAppending(){
+        DequeNode node1 = new DequeNode(1,null,null);
+        DequeNode node2 = new DequeNode(2,null,null);
+        int initialSize = doubleEndedQueueList.size();
+
+        doubleEndedQueueList.append(node1);
         doubleEndedQueueList.append(node2);
         assertThat(node1.getNext()).isEqualTo(node2);
         assertThat(node1.getPrevious()).isNull();
         assertThat(node2.getPrevious()).isEqualTo(node1);
         assertThat(node2.getNext()).isNull();
         assertThat(doubleEndedQueueList.size()).isEqualTo(initialSize+2);
+    }
 
+
+    @Test
+    public void shouldAddThreeOrMoreElementsToSizeAndUpdateReferencesWhenAppending() {
+        DequeNode node1 = new DequeNode(1,null,null);
+        DequeNode node2 = new DequeNode(2,null,null);
+        DequeNode node3 = new DequeNode(3,null,null);
+        int initialSize = doubleEndedQueueList.size();
+
+        doubleEndedQueueList.append(node1);
+        doubleEndedQueueList.append(node2);
         doubleEndedQueueList.append(node3);
+
         assertThat(node2.getNext()).isEqualTo(node3);
         assertThat(node3.getPrevious()).isEqualTo(node2);
         assertThat(node3.getNext()).isNull();
         assertThat(doubleEndedQueueList.size()).isEqualTo(initialSize+3);
     }
 
-    //Test de que AppendLeft actualiza las referencias y el size
     @Test
-    public void shouldAddOneToSizeAndUpdateReferencesWhenAppendingLeft () {
+    public void shouldAddOneElementToSizeAndUpdateReferencesWhenAppendingLeft(){
         DequeNode node1 = new DequeNode(1,null,null);
-        DequeNode node2 = new DequeNode(2,null,null);
-        DequeNode node3 = new DequeNode(3,null,null);
         int initialSize = doubleEndedQueueList.size();
 
         doubleEndedQueueList.appendLeft(node1);
         assertThat(node1.getNext()).isNull();
         assertThat(node1.getPrevious()).isNull();
         assertThat(doubleEndedQueueList.size()).isEqualTo(initialSize+1);
+    }
 
+    @Test
+    public void shouldAddTwoElementsToSizeAndUpdateReferencesWhenAppendingLeft (){
+        DequeNode node1 = new DequeNode(1,null,null);
+        DequeNode node2 = new DequeNode(2,null,null);
+        int initialSize = doubleEndedQueueList.size();
 
+        doubleEndedQueueList.appendLeft(node1);
         doubleEndedQueueList.appendLeft(node2);
         assertThat(node1.getNext()).isNull();
         assertThat(node1.getPrevious()).isEqualTo(node2);
@@ -81,7 +103,19 @@ class DoubleEndedQueueTest {
         assertThat(node2.getNext()).isEqualTo(node1);
         assertThat(doubleEndedQueueList.size()).isEqualTo(initialSize+2);
 
+    }
 
+
+
+    @Test
+    public void shouldAddThreeOrMoreElementsToSizeAndUpdateReferencesWhenAppendingLeft () {
+        DequeNode node1 = new DequeNode(1,null,null);
+        DequeNode node2 = new DequeNode(2,null,null);
+        DequeNode node3 = new DequeNode(3,null,null);
+        int initialSize = doubleEndedQueueList.size();
+
+        doubleEndedQueueList.appendLeft(node1);
+        doubleEndedQueueList.appendLeft(node2);
         doubleEndedQueueList.appendLeft(node3);
         assertThat(node2.getPrevious()).isEqualTo(node3);
         assertThat(node3.getPrevious()).isNull();
@@ -90,10 +124,8 @@ class DoubleEndedQueueTest {
 
     }
 
-
-    //Test de que DeleteLast actualiza las referencias y el size
     @Test
-    public void shouldSubtractOneToSizeAndUpdateReferencesWhenDeletingLast(){
+    public void shouldSubtractOneToSizeAndUpdateReferencesWhenDeletingLastInThreeOrMoreElementsList(){
         DequeNode node1 = new DequeNode(1,null,null);
         DequeNode node2 = new DequeNode(2,null,null);
         DequeNode node3 = new DequeNode(3,null,null);
@@ -101,7 +133,6 @@ class DoubleEndedQueueTest {
         doubleEndedQueueList.append(node2);
         doubleEndedQueueList.append(node3);
         int initialSize = doubleEndedQueueList.size();
-
         doubleEndedQueueList.deleteLast();
 
         assertThat(node1.getNext()).isEqualTo(node2);
@@ -121,6 +152,7 @@ class DoubleEndedQueueTest {
         assertThat(doubleEndedQueueList.size()).isEqualTo(0);
     }
 
+    
     //Test de que DeleteFirst actualiza las referencias y el size
     @Test
     public void shouldSubtractOneToSizeAndUpdateReferencesWhenDeletingFirst(){
