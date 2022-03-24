@@ -35,7 +35,7 @@ class DoubleEndedQueueTest {
 
     //Test de que Append actualiza las referencias y el size
     @Test
-    public void checkAppend () {
+    public void shouldAddOneToSizeAndUpdateReferencesWhenAppending () {
         DequeNode node1 = new DequeNode(1,null,null);
         DequeNode node2 = new DequeNode(2,null,null);
         DequeNode node3 = new DequeNode(3,null,null);
@@ -62,7 +62,7 @@ class DoubleEndedQueueTest {
 
     //Test de que AppendLeft actualiza las referencias y el size
     @Test
-    public void checkAppendLeft () {
+    public void shouldAddOneToSizeAndUpdateReferencesWhenAppendingLeft () {
         DequeNode node1 = new DequeNode(1,null,null);
         DequeNode node2 = new DequeNode(2,null,null);
         DequeNode node3 = new DequeNode(3,null,null);
@@ -93,7 +93,7 @@ class DoubleEndedQueueTest {
 
     //Test de que DeleteLast actualiza las referencias y el size
     @Test
-    public void checkDeleteLast(){
+    public void shouldSubstractcOneToSizeAndUpdateReferencesWhenDeletingLast(){
         DequeNode node1 = new DequeNode(1,null,null);
         DequeNode node2 = new DequeNode(2,null,null);
         DequeNode node3 = new DequeNode(3,null,null);
@@ -123,7 +123,7 @@ class DoubleEndedQueueTest {
 
     //Test de que DeleteFirst actualiza las referencias y el size
     @Test
-    public void checkDeleteFirst(){
+    public void shouldSubstractOneToSizeAndUpdateReferencesWhenDeletingFirst(){
         DequeNode node1 = new DequeNode(1,null,null);
         DequeNode node2 = new DequeNode(2,null,null);
         DequeNode node3 = new DequeNode(3,null,null);
@@ -150,7 +150,7 @@ class DoubleEndedQueueTest {
     }
 
     @Test
-    public void shouldHaveRaisedAnExceptionIfDeleteANodeFromEmptyList(){
+    public void shouldRaiseExceptionWhenDeletingANodeFromEmptyList(){
         assertThrows(RuntimeException.class,() -> doubleEndedQueueList.deleteFirst());
         assertThrows(RuntimeException.class,() -> doubleEndedQueueList.deleteLast());
     }
