@@ -175,14 +175,7 @@ public class DoubleEndedQueueList<T> implements DoubleEndedQueue<T> {
             while (!sorted) {
                 while (next != null) {
                     if (comparator.compare(previous.getItem(), next.getItem()) > 0) {
-                        previous.getPrevious().setNext(next);
-                        next.getNext().setPrevious(previous);
-
-                        next.setPrevious(previous.getPrevious());
-                        previous.setNext(next.getNext());
-
-                        next.setNext(previous);
-                        previous.setPrevious(next);
+                        cambiarNodos(previous, next);
 
                         sorted = false;
                     }
@@ -191,6 +184,26 @@ public class DoubleEndedQueueList<T> implements DoubleEndedQueue<T> {
                 }
             }
         }
+    }
+
+    private void cambiarNodos(DequeNode<T> previous, DequeNode<T> next) {
+        if (previous.isFirstNode()){
+            first = next;
+        } else {
+            previous.getPrevious().setNext(next);
+        }
+
+        if (next.isLastNode()){
+            last = previous;
+        } else {
+            next.getNext().setPrevious(previous);
+        }
+
+        next.setPrevious(previous.getPrevious());
+        previous.setNext(next.getNext());
+
+        next.setNext(previous);
+        previous.setPrevious(next);
     }
 
 /*    @Override
