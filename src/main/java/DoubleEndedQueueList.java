@@ -47,7 +47,6 @@ public class DoubleEndedQueueList<T> implements DoubleEndedQueue<T> {
         if (first == null) {
             first = node;
             last = node;
-            node.setPrevious(null);
 
         } else {
             first.setPrevious(node);
