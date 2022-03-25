@@ -2,6 +2,8 @@ import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
+import java.util.Comparator;
+
 import static org.assertj.core.api.Assertions.as;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.junit.jupiter.api.Assertions.*;
@@ -555,7 +557,14 @@ class DoubleEndedQueueTest {
         list.append(node5);
         list.append(node4);
 
-        //list.sort();
+        Comparator<Integer> comp = new Comparator<Integer>() {
+            @Override
+            public int compare(Integer o1, Integer o2) {
+                return o1.compareTo(o2);
+            }
+        };
+
+        list.sort(comp);
 
         DoubleEndedQueueList<Integer> expectedValue = new DoubleEndedQueueList<>();
         expectedValue.append(node1);
