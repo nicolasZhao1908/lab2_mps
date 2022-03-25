@@ -221,5 +221,5 @@ public class DoubleEndedQueueList<T> implements DoubleEndedQueue<T> {
     public int hashCode() {
         return Objects.hash(first, last, size);
     }
-
+    */
 }
