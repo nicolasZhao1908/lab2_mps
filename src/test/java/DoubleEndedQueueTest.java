@@ -569,6 +569,7 @@ class DoubleEndedQueueTest {
         DoubleEndedQueueList<Integer> expectedValue = new DoubleEndedQueueList<>();
         expectedValue.append(node1);
         expectedValue.append(node2);
+        expectedValue.append(node3);
         expectedValue.append(node4);
         expectedValue.append(node5);
 
