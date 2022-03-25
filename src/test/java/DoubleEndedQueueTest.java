@@ -557,14 +557,24 @@ class DoubleEndedQueueTest {
         list.append(node5);
         list.append(node4);
 
+        System.out.print(list.size());
+
+        for (int i = 0; i<list.size(); i++){
+            System.out.println(list.getAt(i).getItem());
+        }
+
         Comparator<Integer> comp = new Comparator<Integer>() {
             @Override
             public int compare(Integer o1, Integer o2) {
-                return o1.compareTo(o2);
+                return o1 - o2;
             }
         };
 
         list.sort(comp);
+
+        for (int i = 0; i<list.size(); i++){
+            System.out.println(list.getAt(i).getItem());
+        }
 
         DoubleEndedQueueList<Integer> expectedValue = new DoubleEndedQueueList<>();
         expectedValue.append(node1);
@@ -573,7 +583,7 @@ class DoubleEndedQueueTest {
         expectedValue.append(node4);
         expectedValue.append(node5);
 
-        assertEquals(expectedValue,list);
+        assertThat(expectedValue).isEqualTo(list);
     }
 
 

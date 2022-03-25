@@ -6,7 +6,7 @@ public class DoubleEndedQueueList<T> implements DoubleEndedQueue<T> {
 
     private DequeNode<T> first;
     private DequeNode<T> last;
-    int size;
+    private int size;
 
     public DoubleEndedQueueList() {
         first = null;
@@ -33,8 +33,8 @@ public class DoubleEndedQueueList<T> implements DoubleEndedQueue<T> {
             node.setPrevious(null);
 
         } else {
-            last.setNext(node);
             node.setPrevious(last);
+            last.setNext(node);
             last = node;
         }
 
@@ -114,8 +114,10 @@ public class DoubleEndedQueueList<T> implements DoubleEndedQueue<T> {
             throw new RuntimeException("The position is negative");
         }
         DequeNode res = first;
-        for (int actualIndex = 0; actualIndex < position; actualIndex++) {
-            res = first.getNext();
+        int cont = 0;
+        while (cont<position) {
+            res = res.getNext();
+            cont++;
         }
         return res;
     }
@@ -165,21 +167,13 @@ public class DoubleEndedQueueList<T> implements DoubleEndedQueue<T> {
 
     @Override
     public void sort(Comparator<T> comparator) {
-        DequeNode<T> previous = first;
-        DequeNode<T> next = null;
-        boolean sorted = false;
-
         if (first != null) {
-            next = previous.getNext();
-            while (!sorted) {
-                sorted=true;
-                while (next != null) {
-                    if (comparator.compare(previous.getItem(), next.getItem()) < 0) {
-                        cambiarNodos(previous, next);
-                        sorted = false;
+            for (int i = this.size() -1; i> 0; i--) {
+                for (int j = 0; j < i; j++) {
+                    int k = j + 1;
+                    if (comparator.compare(this.getAt(j).getItem(), this.getAt(k).getItem()) > 0) {
+                        cambiarNodos(this.getAt(j), this.getAt(k));
                     }
-                    previous = next;
-                    next = next.getNext();
                 }
             }
         }
