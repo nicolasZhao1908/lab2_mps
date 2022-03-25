@@ -173,7 +173,7 @@ public class DoubleEndedQueueList<T> implements DoubleEndedQueue<T> {
             next = previous.getNext();
             while (!sorted) {
                 while (next != null) {
-                    if (comparator.compare(previous.getItem(), next.getItem()) > 0) {
+                    if (comparator.compare(previous.getItem(), next.getItem()) < 0) {
                         cambiarNodos(previous, next);
 
                         sorted = false;
