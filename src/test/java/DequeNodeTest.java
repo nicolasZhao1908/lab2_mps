@@ -1,4 +1,5 @@
 import org.junit.jupiter.api.AfterEach;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import static org.assertj.core.api.Assertions.*;
 
@@ -8,6 +9,11 @@ import static org.junit.jupiter.api.Assertions.*;
 class DequeNodeTest<T> {
     private DequeNode first;
 
+    @BeforeEach
+    public void setup(){
+        Integer item = 0;
+        first = new DequeNode<>(item,null,null);
+    }
     @AfterEach
     public void finish(){
         first = null;
@@ -16,7 +22,6 @@ class DequeNodeTest<T> {
     @Test
     public void shouldHaveUpdatedNextIfSetNewNext(){
         Integer item = 0;
-        DequeNode <Integer> first = new DequeNode<>(item,null,null);
         DequeNode <Integer> second = new DequeNode<>(item, null, first);
 
         DequeNode oldNext = first.getNext();
@@ -29,7 +34,6 @@ class DequeNodeTest<T> {
     @Test
     public void shouldHaveUpdatedNextIfSetNewPrevious(){
         Integer item = 0;
-        DequeNode <Integer> first = new DequeNode<>(item,null,null);
         DequeNode <Integer> second = new DequeNode<>(item, null, null);
 
         DequeNode oldPrevious = second.getPrevious();
@@ -41,7 +45,6 @@ class DequeNodeTest<T> {
 
     @Test
     public void testNewItemSetIsNotNull(){
-        first = new DequeNode<>(null,null,null);
         Integer newItem = 1;
         first.setItem(newItem);
         assertThat(first.getItem()).isNotNull();
@@ -51,7 +54,6 @@ class DequeNodeTest<T> {
     public void testNewItemSetIsUpdated(){
         Integer newItem = 1;
 
-        first = new DequeNode<>(null,null,null);
         Integer oldItem = (Integer) first.getItem();
         first.setItem(newItem);
         newItem = (Integer) first.getItem();
@@ -61,8 +63,6 @@ class DequeNodeTest<T> {
 
     @Test
     public void isNotATerminalNode() {
-
-        first = new DequeNode<Integer>(1, null, null);
 
         //first is not a terminal node
         DequeNode prev = new DequeNode(1, first, null);
@@ -76,9 +76,6 @@ class DequeNodeTest<T> {
 
     @Test
     public void oneNodeIsATerminalNodeAndFirstNode() {
-
-        first = new DequeNode<Integer>(1, null, null);
-
         //first is the only node
         assertThat(first.isFirstNode()).isTrue();
 
@@ -86,9 +83,6 @@ class DequeNodeTest<T> {
 
     @Test
     public void lastNodeIsIsATerminalNodeAndLastNode() {
-
-        first = new DequeNode<Integer>(1, null, null);
-
         //first is not a terminal node
         DequeNode prev = new DequeNode(1, first, null);
 
@@ -97,5 +91,17 @@ class DequeNodeTest<T> {
         assertThat(first.isLastNode()).isTrue();
     }
 
-
+    @Test
+    public void shouldEqualHashCodeBeSymmetricReflexive(){
+      DequeNode expectedValue, actualValue;
+       /*
+        expectedValue = 7;
+        expectedValue = 31 * expectedValue + first.getItem().hashCode();
+        expectedValue = 31 * expectedValue + (first.getNext() == null ? 0 : first.getNext().hashCode());
+        expectedValue = 31 * expectedValue + (first.getPrevious() == null ? 0 : first.getPrevious().hashCode());*/
+        expectedValue = first;
+        actualValue = new DequeNode<>(0,null,null);
+        assertThat(actualValue.equals(expectedValue)).isTrue();
+        assertThat(actualValue.hashCode()).isEqualTo(expectedValue.hashCode());
+    }
 }

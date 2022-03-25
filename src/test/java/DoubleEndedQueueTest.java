@@ -502,12 +502,14 @@ class DoubleEndedQueueTest {
         list.append(node3);
         list.append(node4);
 
+        list.delete(node4);
+
         DoubleEndedQueueList<Integer> expectedValue = new DoubleEndedQueueList<>();
         expectedValue.append(node1);
         expectedValue.append(node2);
         expectedValue.append(node3);
 
-        list.delete(node4);
+
 
         assertEquals(expectedValue,list);
     }
@@ -525,12 +527,13 @@ class DoubleEndedQueueTest {
         list.append(node3);
         list.append(node4);
 
+        list.delete(node3);
+
         DoubleEndedQueueList<Integer> expectedValue = new DoubleEndedQueueList<>();
         expectedValue.append(node1);
         expectedValue.append(node2);
         expectedValue.append(node4);
 
-        list.delete(node3);
 
         assertEquals(expectedValue,list);
     }

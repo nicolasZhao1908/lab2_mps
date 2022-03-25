@@ -1,25 +1,25 @@
 import java.util.Comparator;
 import java.util.Objects;
 
-public class DoubleEndedQueueList<T> implements DoubleEndedQueue<T>{
+public class DoubleEndedQueueList<T> implements DoubleEndedQueue<T> {
 
 
     private DequeNode<T> first;
     private DequeNode<T> last;
     int size;
 
-    public DoubleEndedQueueList (){
+    public DoubleEndedQueueList() {
         first = null;
         last = null;
         size = 0;
     }
 
-    public DoubleEndedQueueList (DoubleEndedQueueList lista){
-        first= null;
+    public DoubleEndedQueueList(DoubleEndedQueueList lista) {
+        first = null;
         last = null;
         size = 0;
 
-        while (size <= lista.size()){
+        while (size <= lista.size()) {
             this.append(new DequeNode(lista.getAt(size).getItem(), null, null));
         }
     }
@@ -27,7 +27,7 @@ public class DoubleEndedQueueList<T> implements DoubleEndedQueue<T>{
 
     @Override
     public void append(DequeNode node) {
-        if (first == null){
+        if (first == null) {
             first = node;
             last = node;
             node.setPrevious(null);
@@ -39,12 +39,12 @@ public class DoubleEndedQueueList<T> implements DoubleEndedQueue<T>{
         }
 
         node.setNext(null);
-        size ++;
+        size++;
     }
 
     @Override
     public void appendLeft(DequeNode node) {
-        if (first == null){
+        if (first == null) {
             first = node;
             last = node;
             node.setPrevious(null);
@@ -60,7 +60,7 @@ public class DoubleEndedQueueList<T> implements DoubleEndedQueue<T>{
 
     @Override
     public void deleteFirst() {
-        if (first!=null){
+        if (first != null) {
             if (first.getNext() == null) {
                 //Si solo hay 1 elemento
                 first = null;
@@ -70,14 +70,14 @@ public class DoubleEndedQueueList<T> implements DoubleEndedQueue<T>{
                 first.setPrevious(null);
             }
             size--;
-        }else {
+        } else {
             throw new RuntimeException("The list is empty");
         }
     }
 
     @Override
     public void deleteLast() {
-        if (first!=null){
+        if (first != null) {
             if (first.getNext() == null) {
                 //Si solo hay 1 elemento
                 first = null;
@@ -87,7 +87,7 @@ public class DoubleEndedQueueList<T> implements DoubleEndedQueue<T>{
                 last.setNext(null);
             }
             size--;
-        }else{
+        } else {
             throw new RuntimeException("The list is empty");
         }
     }
@@ -111,11 +111,11 @@ public class DoubleEndedQueueList<T> implements DoubleEndedQueue<T>{
     public DequeNode<T> getAt(int position) {
         if (position >= size)
             throw new RuntimeException("The position is out of bounds");
-        if (position < 0){
+        if (position < 0) {
             throw new RuntimeException("The position is negative");
         }
         DequeNode res = first;
-        for (int actualIndex = 0; actualIndex < position; actualIndex++){
+        for (int actualIndex = 0; actualIndex < position; actualIndex++) {
             res = first.getNext();
         }
         return res;
@@ -126,8 +126,8 @@ public class DoubleEndedQueueList<T> implements DoubleEndedQueue<T>{
         DequeNode temp = first;
         DequeNode result = null;
 
-        while (temp != null){
-            if (item.equals(temp.getItem())){
+        while (temp != null) {
+            if (item.equals(temp.getItem())) {
                 result = temp;
             }
             temp = temp.getNext();
@@ -137,16 +137,16 @@ public class DoubleEndedQueueList<T> implements DoubleEndedQueue<T>{
 
     @Override
     public void delete(DequeNode<T> node) {
-        if(node == null) {
+        if (node == null) {
             throw new RuntimeException("Node not valid");
-        }else if(findNode(node) == null){
+        } else if (findNode(node) == null) {
             throw new RuntimeException("Node not in list");
-        }else{
-            if(first.equals(node)){
+        } else {
+            if (first.equals(node)) {
                 deleteFirst();
-            }else if(last.equals(node)){
+            } else if (last.equals(node)) {
                 deleteLast();
-            }else{
+            } else {
                 node.getPrevious().setNext(node.getNext());
                 node.getNext().setPrevious(node.getPrevious());
                 size--;
@@ -154,10 +154,10 @@ public class DoubleEndedQueueList<T> implements DoubleEndedQueue<T>{
         }
     }
 
-    private DequeNode<T> findNode (DequeNode<T> node){
+    private DequeNode<T> findNode(DequeNode<T> node) {
         DequeNode actualNode = first;
 
-        while(actualNode != null && !actualNode.equals(node)){
+        while (actualNode != null && !actualNode.equals(node)) {
             actualNode = actualNode.getNext();
         }
 
@@ -170,11 +170,11 @@ public class DoubleEndedQueueList<T> implements DoubleEndedQueue<T>{
         DequeNode<T> next = null;
         boolean sorted = false;
 
-        if (first != null){
+        if (first != null) {
             next = previous.getNext();
-            while (!sorted){
-                while (next!=null){
-                    if (comparator.compare(previous.getItem(),next.getItem()) > 0){
+            while (!sorted) {
+                while (next != null) {
+                    if (comparator.compare(previous.getItem(), next.getItem()) > 0) {
                         previous.getPrevious().setNext(next);
                         next.getNext().setPrevious(previous);
 
@@ -193,7 +193,7 @@ public class DoubleEndedQueueList<T> implements DoubleEndedQueue<T>{
         }
     }
 
-    @Override
+/*    @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
@@ -207,4 +207,5 @@ public class DoubleEndedQueueList<T> implements DoubleEndedQueue<T>{
     public int hashCode() {
         return Objects.hash(first, last, size);
     }
+    */
 }
