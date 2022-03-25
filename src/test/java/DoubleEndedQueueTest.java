@@ -521,11 +521,14 @@ class DoubleEndedQueueTest {
         DequeNode node2 = new DequeNode(2,null, null);
         DequeNode node3 = new DequeNode(3,null, null);
         DequeNode node4 = new DequeNode(4,null, null);
+        DequeNode node5 = new DequeNode(5,null, null);
+
 
         list.append(node1);
         list.append(node2);
         list.append(node3);
         list.append(node4);
+        list.append(node5);
 
         list.delete(node3);
 
@@ -533,7 +536,7 @@ class DoubleEndedQueueTest {
         expectedValue.append(node1);
         expectedValue.append(node2);
         expectedValue.append(node4);
-
+        expectedValue.append(node5);
 
         assertEquals(expectedValue,list);
     }
