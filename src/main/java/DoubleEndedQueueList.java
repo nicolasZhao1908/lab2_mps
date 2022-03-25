@@ -207,7 +207,7 @@ public class DoubleEndedQueueList<T> implements DoubleEndedQueue<T> {
         previous.setPrevious(next);
     }
 
-/*    @Override
+    @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
@@ -221,5 +221,5 @@ public class DoubleEndedQueueList<T> implements DoubleEndedQueue<T> {
     public int hashCode() {
         return Objects.hash(first, last, size);
     }
-    */
+
 }
