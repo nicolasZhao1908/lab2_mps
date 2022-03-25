@@ -186,6 +186,7 @@ public class DoubleEndedQueueList<T> implements DoubleEndedQueue<T> {
         }
     }
 
+
     private void cambiarNodos(DequeNode<T> previous, DequeNode<T> next) {
         if (previous.isFirstNode()){
             first = next;
@@ -220,5 +221,5 @@ public class DoubleEndedQueueList<T> implements DoubleEndedQueue<T> {
     public int hashCode() {
         return Objects.hash(first, last, size);
     }
-    */
+
 }
