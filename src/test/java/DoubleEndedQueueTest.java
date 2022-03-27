@@ -53,59 +53,6 @@ class DoubleEndedQueueTest {
     }
 
     @Test
-    public void shouldUpdateReferencesWhenAppendingTwoNodes() {
-        DequeNode node1 = new DequeNode(1, null, null);
-        DequeNode node2 = new DequeNode(2, null, null);
-        doubleEndedQueueList.append(node1);
-        doubleEndedQueueList.append(node2);
-
-        assertThat(node1.getNext()).isEqualTo(node2);
-        assertThat(node1.getPrevious()).isNull();
-        assertThat(node2.getPrevious()).isEqualTo(node1);
-        assertThat(node2.getNext()).isNull();
-    }
-
-    @Test
-    public void shouldAddTwoToSizeWhenAppendingTwoNodes() {
-        DequeNode node1 = new DequeNode(1, null, null);
-        DequeNode node2 = new DequeNode(2, null, null);
-        int initialSize = doubleEndedQueueList.size();
-        doubleEndedQueueList.append(node1);
-        doubleEndedQueueList.append(node2);
-
-        assertThat(doubleEndedQueueList.size()).isEqualTo(initialSize + 2);
-    }
-
-    @Test
-    public void shouldUpdateReferencesWhenAppendingThreeNodes() {
-        DequeNode node1 = new DequeNode(1, null, null);
-        DequeNode node2 = new DequeNode(2, null, null);
-        DequeNode node3 = new DequeNode(3, null, null);
-
-        doubleEndedQueueList.append(node1);
-        doubleEndedQueueList.append(node2);
-        doubleEndedQueueList.append(node3);
-
-        assertThat(node2.getNext()).isEqualTo(node3);
-        assertThat(node3.getPrevious()).isEqualTo(node2);
-        assertThat(node3.getNext()).isNull();
-    }
-
-    @Test
-    public void shouldAddThreeToSizeWhenAppendingThreeNodes() {
-        DequeNode node1 = new DequeNode(1, null, null);
-        DequeNode node2 = new DequeNode(2, null, null);
-        DequeNode node3 = new DequeNode(3, null, null);
-        int initialSize = doubleEndedQueueList.size();
-
-        doubleEndedQueueList.append(node1);
-        doubleEndedQueueList.append(node2);
-        doubleEndedQueueList.append(node3);
-
-        assertThat(doubleEndedQueueList.size()).isEqualTo(initialSize + 3);
-    }
-
-    @Test
     public void shouldUpdateReferencesWhenAppendingLeftOneNode() {
         DequeNode node1 = new DequeNode(1, null, null);
 
@@ -121,58 +68,6 @@ class DoubleEndedQueueTest {
 
         doubleEndedQueueList.appendLeft(node1);
         assertThat(doubleEndedQueueList.size()).isEqualTo(initialSize + 1);
-    }
-
-    @Test
-    public void shouldUpdateReferencesWhenAppendingLeftTwoNodes() {
-        DequeNode node1 = new DequeNode(1, null, null);
-        DequeNode node2 = new DequeNode(2, null, null);
-        doubleEndedQueueList.appendLeft(node1);
-        doubleEndedQueueList.appendLeft(node2);
-        assertThat(node1.getNext()).isNull();
-        assertThat(node1.getPrevious()).isEqualTo(node2);
-        assertThat(node2.getPrevious()).isNull();
-        assertThat(node2.getNext()).isEqualTo(node1);
-    }
-
-    @Test
-    public void shouldAddTwoToSizeWhenAppendingLeftTwoNodes() {
-        DequeNode node1 = new DequeNode(1, null, null);
-        DequeNode node2 = new DequeNode(2, null, null);
-        int initialSize = doubleEndedQueueList.size();
-
-        doubleEndedQueueList.appendLeft(node1);
-        doubleEndedQueueList.appendLeft(node2);
-        assertThat(doubleEndedQueueList.size()).isEqualTo(initialSize + 2);
-
-    }
-
-    @Test
-    public void shouldUpdateReferencesWhenAppendingLeftThreeNodes() {
-        DequeNode node1 = new DequeNode(1, null, null);
-        DequeNode node2 = new DequeNode(2, null, null);
-        DequeNode node3 = new DequeNode(3, null, null);
-        doubleEndedQueueList.appendLeft(node1);
-        doubleEndedQueueList.appendLeft(node2);
-        doubleEndedQueueList.appendLeft(node3);
-        assertThat(node2.getPrevious()).isEqualTo(node3);
-        assertThat(node3.getPrevious()).isNull();
-        assertThat(node3.getNext()).isEqualTo(node2);
-    }
-
-    @Test
-    public void shouldAddThreeToSizeWhenAppendingLeftThreeNodes() {
-        DequeNode node1 = new DequeNode(1, null, null);
-        DequeNode node2 = new DequeNode(2, null, null);
-        DequeNode node3 = new DequeNode(3, null, null);
-        int initialSize = doubleEndedQueueList.size();
-
-        doubleEndedQueueList.appendLeft(node1);
-        doubleEndedQueueList.appendLeft(node2);
-        doubleEndedQueueList.appendLeft(node3);
-
-        assertThat(doubleEndedQueueList.size()).isEqualTo(initialSize + 3);
-
     }
 
     @Test
@@ -467,7 +362,7 @@ class DoubleEndedQueueTest {
     }
 
     @Test
-    public void shouldFindANodeThatThereIsInList() {
+    public void shouldFindANodeThatIsInList() {
         DequeNode node1 = new DequeNode(1, null, null);
         DequeNode node2 = new DequeNode(2, null, null);
         DequeNode node3 = new DequeNode(3, null, null);
@@ -480,79 +375,6 @@ class DoubleEndedQueueTest {
         DequeNode aux = actualList.getAt(0);
 
         assertThat(actualList.find(aux.getItem())).isNotNull();
-    }
-
-    @Test
-    public void shouldDeleteTheFirstNode() {
-        DoubleEndedQueueList<Integer> list = new DoubleEndedQueueList<>();
-        DequeNode node1 = new DequeNode(1, null, null);
-        DequeNode node2 = new DequeNode(2, null, null);
-        DequeNode node3 = new DequeNode(3, null, null);
-        DequeNode node4 = new DequeNode(4, null, null);
-
-        list.append(node1);
-        list.append(node2);
-        list.append(node3);
-        list.append(node4);
-
-        DoubleEndedQueueList<Integer> expectedValue = new DoubleEndedQueueList<>();
-        expectedValue.append(node2);
-        expectedValue.append(node3);
-        expectedValue.append(node4);
-
-        list.delete(node1);
-
-        assertEquals(expectedValue, list);
-    }
-
-    @Test
-    public void shouldDeleteTheLastNode() {
-        DoubleEndedQueueList<Integer> list = new DoubleEndedQueueList<>();
-        DequeNode node1 = new DequeNode(1, null, null);
-        DequeNode node2 = new DequeNode(2, null, null);
-        DequeNode node3 = new DequeNode(3, null, null);
-        DequeNode node4 = new DequeNode(4, null, null);
-
-        list.append(node1);
-        list.append(node2);
-        list.append(node3);
-        list.append(node4);
-
-        list.delete(node4);
-
-        DoubleEndedQueueList<Integer> expectedValue = new DoubleEndedQueueList<>();
-        expectedValue.append(node1);
-        expectedValue.append(node2);
-        expectedValue.append(node3);
-
-
-        assertEquals(expectedValue, list);
-    }
-
-    @Test
-    public void shouldDeleteAnIntermediateNode() {
-        DoubleEndedQueueList<Integer> list = new DoubleEndedQueueList<>();
-        DequeNode node1 = new DequeNode(1, null, null);
-        DequeNode node2 = new DequeNode(2, null, null);
-        DequeNode node3 = new DequeNode(3, null, null);
-        DequeNode node4 = new DequeNode(4, null, null);
-        DequeNode node5 = new DequeNode(5, null, null);
-
-        list.append(node1);
-        list.append(node2);
-        list.append(node3);
-        list.append(node4);
-        list.append(node5);
-
-        list.delete(node3);
-
-        DoubleEndedQueueList<Integer> expectedValue = new DoubleEndedQueueList<>();
-        expectedValue.append(node1);
-        expectedValue.append(node2);
-        expectedValue.append(node4);
-        expectedValue.append(node5);
-
-        assertEquals(expectedValue, list);
     }
 
     @Test
