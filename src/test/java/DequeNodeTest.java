@@ -93,12 +93,7 @@ class DequeNodeTest<T> {
 
     @Test
     public void shouldEqualHashCodeBeSymmetricReflexive(){
-      DequeNode expectedValue, actualValue;
-       /*
-        expectedValue = 7;
-        expectedValue = 31 * expectedValue + first.getItem().hashCode();
-        expectedValue = 31 * expectedValue + (first.getNext() == null ? 0 : first.getNext().hashCode());
-        expectedValue = 31 * expectedValue + (first.getPrevious() == null ? 0 : first.getPrevious().hashCode());*/
+        DequeNode expectedValue, actualValue;
         expectedValue = first;
         actualValue = new DequeNode<>(0,null,null);
         assertThat(actualValue.equals(expectedValue)).isTrue();

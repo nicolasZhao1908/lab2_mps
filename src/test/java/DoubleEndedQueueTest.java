@@ -575,7 +575,20 @@ class DoubleEndedQueueTest {
 
         assertThat(expectedValue).isEqualTo(list);
     }
+    @Test
+    public void shouldEqualHashCodeBeSymmetricReflexive(){
+        DoubleEndedQueue expectedValue, actualValue;
+
+        DequeNode node1 = new DequeNode(1,null,null);
 
 
+        doubleEndedQueueList.append(node1);
+        actualValue = doubleEndedQueueList;
 
+        expectedValue = new DoubleEndedQueueList((DoubleEndedQueueList) actualValue);
+
+        assertThat(actualValue.equals(expectedValue)).isTrue();
+        assertThat(actualValue.hashCode()).isEqualTo(expectedValue.hashCode());
+
+    }
 }

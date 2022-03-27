@@ -19,7 +19,7 @@ public class DoubleEndedQueueList<T> implements DoubleEndedQueue<T> {
         last = null;
         size = 0;
 
-        while (size <= lista.size()) {
+        while (size < lista.size()) {
             this.append(new DequeNode(lista.getAt(size).getItem(), null, null));
         }
     }
@@ -172,7 +172,7 @@ public class DoubleEndedQueueList<T> implements DoubleEndedQueue<T> {
                 for (int j = 0; j < i; j++) {
                     int k = j + 1;
                     if (comparator.compare(this.getAt(j).getItem(), this.getAt(k).getItem()) > 0) {
-                        cambiarNodos(this.getAt(j), this.getAt(k));
+                        changeNodes(this.getAt(j), this.getAt(k));
                     }
                 }
             }
@@ -180,7 +180,7 @@ public class DoubleEndedQueueList<T> implements DoubleEndedQueue<T> {
     }
 
 
-    private void cambiarNodos(DequeNode<T> previous, DequeNode<T> next) {
+    private void changeNodes(DequeNode<T> previous, DequeNode<T> next) {
         if (previous.isFirstNode()){
             first = next;
         } else {
@@ -204,15 +204,19 @@ public class DoubleEndedQueueList<T> implements DoubleEndedQueue<T> {
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
+
         DoubleEndedQueueList<?> that = (DoubleEndedQueueList<?>) o;
-        DequeNode node1 = first;
-        DequeNode node2 = that.first;
-        return size == that.size && Objects.equals(first, that.first) && Objects.equals(last, that.last);
+
+        if (size != that.size) return false;
+        if (first != null ? !first.equals(that.first) : that.first != null) return false;
+        return last != null ? last.equals(that.last) : that.last == null;
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(first, last, size);
+        int result = first != null ? first.hashCode() : 0;
+        result = 31 * result + (last != null ? last.hashCode() : 0);
+        result = 31 * result + size;
+        return result;
     }
-
 }
