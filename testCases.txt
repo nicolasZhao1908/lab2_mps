@@ -1,21 +1,46 @@
 * DequeNode
 shouldHaveUpdatedNextIfSetNewNext: comprobar que el next se ha actualizado
 shouldHaveUpdatedNextIfSetNewPrevious: comprobar que el prev se ha actualizado
-testNewItemSettedIsNotNull: comprobar que el item no es null
-testNewItemSettedIsUpdated: comprobar que el item se ha actualizado
+testNewItemSetIsNotNull: comprobar que el item no es null
+testNewItemSetIsUpdated: comprobar que el item se ha actualizado
 isNotATerminalNode: comprobar que un nodo que se encuentra entre dos nodos no es terminal
 oneNodeIsATerminalNodeAndFirstNode: comprobar que el un nodo solo isFirst
 lastNodeIsIsATerminalNodeAndLastNode: comprobar que el ultimo nodo isLast
+shouldEqualHashCodeBeSymmetricReflexive: comprobar que el equals y hashcode funcionan correctamente, es decir, deben ser simétrico y reflexivo
 
 * DoubleEndedQueueTest
 testNewNodeAppendedIsNotNull: comprobar que los DequeNode que se pasan como argumentos no son nulos
-shouldAddOneToSizeAndUpdateReferencesWhenAppending: comprobar que al insertar por la derecha un nodo se añade 1 al size del DoubleEndedQueueList y se actualizan las referencias
-shouldAddOneToSizeAndUpdateReferencesWhenAppendingLeft: comprobar que al insertar por la izquierda un nodo se añade 1 al size del DoubleEndedQueueList y se actualizan las referencias
-shouldSubtractOneToSizeAndUpdateReferencesWhenDeletingLast: comprobar que al eliminar el último nodo se reduce 1 al size del DoubleEndedQueueList
-shouldSubtractOneToSizeAndUpdateReferencesWhenDeletingFirst: comprobar que al eliminar el primer nodo se reduce 1 al size del DoubleEndedQueueList
-shouldGetAtPositionOneReturnTheNodeAtPositionOne: comprobar que al usar el método getAt con argumento 1, devuelve el segundo nodo
-shouldGetAtPositionZeroReturnTheNodeAtPositionZero: comprobar que al usar el método getAt con argumento 0, devuelve el primer nodo
-shouldGetAtNegativePositionThrowAnException: comprobar que se lance una excepción cuando el argumento de getAt sea negativo
-shouldGetAtPositionGreaterOrEqualThanSizeThrowAnException: lanza una excepción si el argumento de getAt es mayor que el size de la lista
-shouldRaiseExceptionWhenDeletingANodeFromEmptyList: comprobar que no se elimina nada de un DoubleEndedQueueList con size 0
-shouldFindANodeThatThereIsInList: Recupera un nodo y luego lo encuentra
+shouldUpdateReferencesWhenAppendingOneNode: comprobar que se actualizan las referencias de next y previo del nodo cuando se adjunta (append) un nodo
+shouldAddOneToSizeAppendingOneNode: comprobar que se suma uno al size de la lista al adjuntar un nodo al final de la lista
+shouldUpdateReferencesWhenAppendingTwoNodes: comprobar que se actualizan las referencias de next y previo de los nodos cuando se adjunta (append) dos nodo
+shouldAddTwoToSizeWhenAppendingTwoNodes: comprobar que se suma dos al size de la lista al adjuntar dos nodo al final de la lista
+shouldUpdateReferencesWhenAppendingThreeNodes: comprobar que se actualizan las referencias de next y previo de los nodos cuando se adjunta (append) tres nodo
+shouldAddThreeToSizeWhenAppendingThreeNodes: comprobar que se suma tres al size de la lista al adjuntar tres nodo al final de la lista
+shouldUpdateReferencesWhenAppendingLeftOneNode: comprobar que se actualizan las referencias de next y previo del nodo cuando se adjunta (appendLeft) un nodo al principio de la lista
+shouldAddOneToSizeWhenAppendingLeftOneNode: comprobar que se suma uno al size de la lista al adjuntar un nodo al principio de la lista
+shouldUpdateReferencesWhenAppendingLeftTwoNodes: comprobar que se actualizan las referencias de next y previo de los nodos cuando se adjunta (appendLeft) dos nodos al principio de la lista
+shouldAddTwoToSizeWhenAppendingLeftTwoNodes: comprobar que se suma dos al size de la lista al adjuntar dos nodo al principio de la lista
+shouldUpdateReferencesWhenAppendingLeftThreeNodes: comprobar que se actualizan las referencias de next y previo de los nodos cuando se adjunta (appendLeft) tres nodos al principio de la lista
+shouldAddThreeToSizeWhenAppendingLeftThreeNodes: comprobar que se suma tres al size de la lista al adjuntar tres nodo al principio de la lista
+shouldUpdateReferencesWhenDeletingLastThreeNodes: comprobar que se actualizan las referencias de next y previo de los nodos cuando se elimina (deleteLast) tres nodo al final de la lista
+shouldSubtractThreeToSizeWhenDeletingLastThreeNodes: comprobar que se resta tres al size de la lista al desajuntar tres nodos al final de la lista
+shouldUpdateReferencesWhenDeletingFirstThreeNodes: comprobar que se actualizan las referencias de next y previo de los nodos cuando se elimina (deleteFirst) tres nodo al principio de la lista
+shouldSubtractThreeToSizeWhenDeletingFirstThreeNodes: comprobar que se resta tres al size de la lista al desajuntar tres nodos al principio de la lista
+shouldGetAtPositionOneReturnTheNodeAtPositionOne: comprobar que la operación getAt(1) retorna el nodo en la posición 1 de la lista
+shouldGetAtPositionZeroReturnTheNodeAtPositionZero: comprobar que la operación getAt(0) retorna el nodo en la posición 0 de la lista
+shouldGetAtNegativePositionThrowAnException: comprobar que la operación getAt(n), siendo n un número negativo, lanza una excepción
+shouldGetAtPositionGreaterOrEqualThanListSizeThrowAnException: comprobar que la operación getAt(N), siendo N un número mayor que el size de la lista, lanza una excepción
+shouldRaiseExceptionWhenDeletingANodeFromEmptyList: comprobar que al intentar eliminar un nodo de una lista vacía, lanza una excepción
+shouldRaiseExceptionWhenDeletingAnEmptyNode: comprobar que al intentar eliminar un nodo nulo de una lista, lanza una excepción
+shouldRaiseExceptionWhenDeletingANodeNotInTheList: comprobar que al intentar eliminar un nodo que no está en la lista, lanza una excepción
+shouldSubtractOneToListSizeWhenDeletingANode: comprobar que al eliminar un nodo de la lista, se resta uno al size de la lista
+shouldUpdateReferencesWhenDeletingANode: comprobar que se actualiza las referencias de next y previo de los nodos al eliminar un nodo
+shouldListSubtractANodeWhenDeletingANode: comprobar que se extrae un nodo al eliminar un nodo
+shouldListSubtractFirstNodeWhenDeletingFirstNode: comprobar que la operación deletingFirst() extrae el primer nodo
+shouldListSubtractLastNodeWhenDeletingLastNode: comprobar que la operación deletingLast() extrae el último nodo
+shouldFindANodeThatThereIsInList: comprobar que la operación find(N) encuentra un nodo N en la lista
+shouldDeleteTheFirstNode: comprobar que la operación delete(N), siendo N el primer nodo de la lista, elimina el primer nodo de la lista
+shouldDeleteTheLastNode: comprobar que la operación delete(N), siendo N el último nodo de la lista, elimina el último nodo de la lista
+shouldDeleteAnIntermediateNode: comprobar que la operación delete(N), siendo N un nodo intermedio de la lista, elimina el nodo intermedio N de la lista
+shouldSortTheNodes: comprobar que la operación sort() ordena la lista, según el valor del item de forma ascendente
+shouldEqualHashCodeBeSymmetricReflexive: comprobar que el equals y hashcode funcionan correctamente, es decir, deben ser simétrico y reflexivo
